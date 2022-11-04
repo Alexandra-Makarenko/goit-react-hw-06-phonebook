@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 export const ListItem = ({ contact: { name, number } }) => {
   return (
     <div>{name} {number}
@@ -6,9 +6,9 @@ export const ListItem = ({ contact: { name, number } }) => {
   );
 };
 
-// ListItem.propTypes = {
-//     contact: PropTypes.shape({
-//         name: PropTypes.string.isRequired,
-//         number:PropTypes.string.isRequired,
-//       }).isRequired
-// }
+ListItem.propTypes = {
+    contact: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        number:PropTypes.string.isRequired,
+      }).isRequired
+}

@@ -7,15 +7,20 @@ const contactsInitialState = [
     {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ];
+//   console.log(contactsInitialState)
 
 const contactsSlice = createSlice({
     name: "contacts",
     initialState: contactsInitialState,
     reducers: {
         addContact: {
-             reducer(state, action) {
-        state.push(action.payload);
-      },
+            reducer(state, action) {
+                console.log(state)
+                // state =[JSON.stringify(state),action.payload];
+                // state = JSON.stringify(state).concat(JSON.stringify(action.payload));
+                console.log(state.contacts)
+            },
+            
             prepare(name,number) {
                 return {
                     payload: {
@@ -25,10 +30,15 @@ const contactsSlice = createSlice({
                     },
                 };
             },
-        }
+        },
+        deleteContact(state, action) {
+      const index = state.findIndex(contact => contact.id === action.payload);
+      state.splice(index, 1);
+        },
+        
     }
 });
 
 // Экспортируем генераторы экшенов и редюсер
-export const { addContact, deleteTask, toggleCompleted } = contactsSlice.actions;
+export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
